@@ -95,7 +95,7 @@ jobs:
 
   # Scan the container 
   scan-image:
-    uses: githubabcs-devops/devsecops-reusable-workflows/.github/workflows/container-security.yml@main
+    uses: devopsabcs-engineering/devsecops-reusable-workflows/.github/workflows/container-security.yml@main
     needs: set-version
     secrets: inherit
     permissions:
@@ -111,7 +111,7 @@ jobs:
       scanning-block: ${{ inputs.scanning-block }}
 
   publish-image:
-    uses: githubabcs-devops/devsecops-reusable-workflows/.github/workflows/container-publish.yml@main
+    uses: devopsabcs-engineering/devsecops-reusable-workflows/.github/workflows/container-publish.yml@main
     needs: [ scan-image, set-version ]
     if: ${{ needs.set-version.outputs.release == 'true' }}
     secrets: inherit
