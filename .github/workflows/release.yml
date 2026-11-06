@@ -30,15 +30,15 @@ jobs:
 
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: "Patch Release Me"
-        uses: 42ByteLabs/patch-release-me@f950db6bce09f2156a5f2d1cc86ac60ed1663a9e    # 0.5.3
+        uses: 42ByteLabs/patch-release-me@473982104461cc2f9f5cba461cccf8ed03792aa7    # 0.6.7
         with:
           mode: ${{ github.event.inputs.bump }}
 
       - name: "Create Release"
-        uses: peter-evans/create-pull-request@271a8d0340265f705b14b6d32b9829c1cb33d45e # v7.0.8
+        uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
         with:
           token: ${{ github.token }}
           commit-message: "[chore]: Create release for ${{ github.event.inputs.version }}"
@@ -61,7 +61,7 @@ jobs:
       # https://github.com/peter-murray/semver-data-action
       - name: Parse SemVer
         id: version
-        uses: peter-murray/semver-action@5a07021b987a48fb9129231397615329ad74703c # v1.0.1
+        uses: peter-murray/semver-action@096534327266864e217e0fb65903cb71df38aa20 # v2.0.0
         with:
           version: ${{ inputs.version }}
 
